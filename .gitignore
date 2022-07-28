@@ -1,0 +1,21 @@
+# temporary files
+*~
+*.swp
+
+# hidden stuff
+.*
+!.editorconfig
+!.gitignore
+!.yamllint
+!.env.dist
+!.github
+
+# python specific
+__pycache__/
+venv/
+
+# project related
+*.zip
+local/docker/*/*/
+!local/docker/*/Dockerfile
+!local/docker/*/*init*

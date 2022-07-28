@@ -1,0 +1,54 @@
+{
+    "States": [
+        {
+            "Execution Fail": {
+                "Type": "Fail"
+            }
+        }
+    ],
+    "StartAt": "my-super-lambda",
+    "my-super-lambda": {
+        "Type": "Task",
+        "Resource": "${TodoLambdaArn}",
+        "Retry": [
+            {
+                "ErrorEquals": [
+                    "ValidatorException",
+                    "SchemaValidationError"
+                ],
+                "MaxAttempts": 0,
+                "Comment": "Skip retry for specified exceptions"
+            },
+            {
+                "ErrorEquals": [
+                    "PriceCalculatorError"
+                ],
+                "IntervalSeconds": 1000,
+                "MaxAttempts": 20,
+                "BackoffRate": 1.5,
+                "Comment": "Approximately 1 month and 1 week"
+            },
+            {
+                "ErrorEquals": [
+                    "States.ALL"
+                ],
+                "IntervalSeconds": 300,
+                "MaxAttempts": 50,
+                "BackoffRate": 1.25,
+                "Comment": "Approximately 8 month"
+            }
+        ],
+        "Catch": [
+            {
+                "ErrorEquals": [
+                    "ValidatorException",
+                    "SchemaValidationError",
+                    "PriceCalculatorError"
+                ],
+                "Next": "Execution Fail",
+                "Comment": "Stop execution for specified exceptions"
+            }
+        ],
+        "End": true
+    }
+}

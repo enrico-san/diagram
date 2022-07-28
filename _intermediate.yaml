@@ -1,0 +1,78 @@
+bpmn:definitions:
+  '@camunda:diagramRelationId': a27737b9-9bde-461d-bfad-4bbffa2e1c7d
+  '@id': Definitions_1
+  '@targetNamespace': http://bpmn.io/schema/bpmn
+  '@xmlns:bpmn': http://www.omg.org/spec/BPMN/20100524/MODEL
+  '@xmlns:bpmndi': http://www.omg.org/spec/BPMN/20100524/DI
+  '@xmlns:camunda': http://camunda.org/schema/1.0/bpmn
+  '@xmlns:dc': http://www.omg.org/spec/DD/20100524/DC
+  '@xmlns:di': http://www.omg.org/spec/DD/20100524/DI
+  bpmn:process:
+  - '@id': Process_746bcb15-88b3-4a21-bfb7-74eca5a65f15
+  - '@isExecutable': 'true'
+  - bpmn:startEvent:
+      '@id': Event_0i55qeh
+      bpmn:outgoing: Flow_0fhc3qf
+  - bpmn:endEvent:
+      '@id': Event_1lun5mo
+      bpmn:incoming: Flow_1tirdag
+  - bpmn:task:
+      '@id': Activity_1g1r1pz
+      '@name': my-super-lambda
+      bpmn:incoming: Flow_0fhc3qf
+      bpmn:outgoing: Flow_1tirdag
+  - bpmn:sequenceFlow:
+      '@id': Flow_0fhc3qf
+      '@sourceRef': Event_0i55qeh
+      '@targetRef': Activity_1g1r1pz
+  - bpmn:sequenceFlow:
+      '@id': Flow_1tirdag
+      '@sourceRef': Activity_1g1r1pz
+      '@targetRef': Event_1lun5mo
+  bpmndi:BPMNDiagram:
+    '@id': BPMNDiagram_1
+    bpmndi:BPMNPlane:
+    - '@bpmnElement': Process_746bcb15-88b3-4a21-bfb7-74eca5a65f15
+    - '@id': BPMNPlane_1
+    - bpmndi:BPMNEdge:
+      - '@bpmnElement': Flow_0fhc3qf
+      - '@id': Flow_0fhc3qf_di
+      - di:waypoint:
+          '@x': '490'
+          '@y': '128'
+      - di:waypoint:
+          '@x': '490'
+          '@y': '220'
+    - bpmndi:BPMNEdge:
+      - '@bpmnElement': Flow_1tirdag
+      - '@id': Flow_1tirdag_di
+      - di:waypoint:
+          '@x': '490'
+          '@y': '300'
+      - di:waypoint:
+          '@x': '490'
+          '@y': '442'
+    - bpmndi:BPMNShape:
+        '@bpmnElement': Event_0i55qeh
+        '@id': Event_0i55qeh_di
+        dc:Bounds:
+          '@height': '36'
+          '@width': '36'
+          '@x': '472'
+          '@y': '92'
+    - bpmndi:BPMNShape:
+        '@bpmnElement': Event_1lun5mo
+        '@id': Event_1lun5mo_di
+        dc:Bounds:
+          '@height': '36'
+          '@width': '36'
+          '@x': '472'
+          '@y': '442'
+    - bpmndi:BPMNShape:
+        '@bpmnElement': Activity_1g1r1pz
+        '@id': Activity_1g1r1pz_di
+        dc:Bounds:
+          '@height': '80'
+          '@width': '100'
+          '@x': '440'
+          '@y': '220'
